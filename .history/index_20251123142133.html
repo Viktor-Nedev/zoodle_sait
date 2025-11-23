@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zoodle</title>
+    <link rel="icon" type="image/png" href="logo.png">
+    <style>
+        :root {
+            --primary-color: #2e7d32;
+            --primary-light: #4caf50;
+            --primary-dark: #1b5e20;
+            --secondary-color: #8bc34a;
+            --text-color: #333;
+            --light-bg: #f5f5f5;
+            --white: #ffffff;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light-bg);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 20px 0;
+            box-shadow: var(--shadow);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+            font-size: 28px;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 20px;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: var(--secondary-color);
+        }
+        
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 20px;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 18px;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            box-shadow: var(--shadow);
+        }
+        
+        .btn:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-3px);
+        }
+        
+        .features {
+            padding: 80px 0;
+            background-color: var(--white);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            color: var(--primary-dark);
+        }
+        
+        .section-title h2 {
+            font-size: 36px;
+            margin-bottom: 15px;
+        }
+        
+        .section-title p {
+            max-width: 600px;
+            margin: 0 auto;
+            color: #666;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .feature-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s;
+            border-top: 4px solid var(--primary-light);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .feature-icon {
+            font-size: 40px;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+        
+        .feature-card h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: var(--primary-dark);
+        }
+        
+        .feature-card p {
+            color: #666;
+        }
+        
+        .app-preview {
+            padding: 80px 0;
+            background-color: var(--light-bg);
+        }
+        
+        .preview-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+        
+        .preview-text {
+            flex: 1;
+        }
+        
+        .preview-text h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: var(--primary-dark);
+        }
+        
+        .preview-text p {
+            margin-bottom: 30px;
+            color: #666;
+        }
+        
+        .preview-image {
+            flex: 1;
+            text-align: center;
+        }
+        
+        .preview-image img {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+        
+        .cta {
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary-color));
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .cta h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        
+        .cta p {
+            max-width: 600px;
+            margin: 0 auto 30px;
+            font-size: 18px;
+        }
+        
+        footer {
+            background-color: var(--primary-dark);
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .footer-links {
+            display: flex;
+            margin: 20px 0;
+        }
+        
+        .footer-links a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--secondary-color);
+        }
+        
+        .copyright {
+            margin-top: 20px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 20px;
+                justify-content: center;
+            }
+            
+            .preview-content {
+                flex-direction: column;
+            }
+            
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .hero p {
+                font-size: 18px;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-paw"></i>
+                    <span>Zoodle</span>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="#features">Функции</a></li>
+                        <li><a href="#preview">Преглед</a></li>
+                        <li><a href="#install">Инсталирай</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+    
+    <section class="hero">
+        <div class="container">
+            <h1>Помогни на животните в беда</h1>
+            <p>Откривай, докладвай и помагай на ранени животни с нашето иновативно приложение. Свържи се със спасителни екипи и ветеринари.</p>
+            <a href="#install" class="btn">Инсталирай сега</a>
+        </div>
+    </section>
+    
+    <section id="features" class="features">
+        <div class="container">
+            <div class="section-title">
+                <h2>Основни функции</h2>
+                <p>Нашето приложение предлага пълен набор от инструменти за помощ на животните</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-map-marked-alt"></i>
+                    </div>
+                    <h3>Интерактивна карта</h3>
+                    <p>Отбелязвай ранени животни на картата, виж най-близките приюти и ветеринарни клиники.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <h3>Чат система</h3>
+                    <p>Комуникирай с други потребители, доброволци и ветеринари в реално време.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-camera"></i>
+                    </div>
+                    <h3>AI разпознаване</h3>
+                    <p>Снимай животно и нашето AI ще разпознае вида и породата му автоматично.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                    <h3>Събития и новини</h3>
+                    <p>Бъди информиран за актуални събития и новини от света на животните.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                    <h3>Персонален профил</h3>
+                    <p>Създай свой профил, събирай баджове и запазвай снимки на сканирани животни.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-hands-helping"></i>
+                    </div>
+                    <h3>Спасителни екипи</h3>
+                    <p>Специален режим за спасителни екипи с достъп до всички сигнали и навигация.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="preview" class="app-preview">
+        <div class="container">
+            <div class="preview-content">
+                <div class="preview-text">
+                    <h2>Как работи приложението?</h2>
+                    <p>С няколко лесни стъпки можеш да помогнеш на животно в беда:</p>
+                    <p>1. Отвори картата и отбележи местоположението на животното</p>
+                    <p>2. Добави снимка и описание на състоянието му</p>
+                    <p>3. Ветеринари и спасители ще получат известие и ще се свържат с теб</p>
+                    <p>4. Следвай инструкциите и наблюдавай развитието на ситуацията</p>
+                    <a href="#install" class="btn">Изтегли приложението</a>
+                </div>
+                <div class="preview-image">
+                    <img src= img.png alt="Преглед на приложението">
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="install" class="cta">
+        <div class="container">
+            <h2>Готови ли сте да помогнете?</h2>
+            <p>Инсталирайте нашето приложение сега и се присъединете към общността на хората, които се грижат за животните.</p>
+            <a href="https://drive.google.com/file/d/1iCqnHTQgRqIzMeGvgv3jcMdnu5EG7_4g/view?usp=sharing" download class="btn">
+               <i class="fas fa-download"></i> Инсталирай приложението за Android
+            </a>
+
+            <div id="installMessage" style="margin-top: 20px; display: none;"></div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="logo">
+                    <i class="fas fa-paw"></i>
+                    <span>Zoodle</span>
+                </div>
+              
+                <div class="copyright">
+                    &copy; 2025 Zoodle. Всички права запазени.
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+  
+        document.getElementById('installBtn').addEventListener('click', function() {
+            const message = document.getElementById('installMessage');
+            message.style.display = 'block';
+            message.innerHTML = '<p>Инсталацията започна... Моля, изчакайте!</p>';
+        
+            setTimeout(function() {
+                message.innerHTML = '<p><i class="fas fa-check-circle" style="color: #8bc34a;"></i> Приложението е инсталирано успешно!</p>';
+            }, 2000);
+        });
+        
+ 
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+                
+                window.scrollTo({
+                    top: targetSection.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
