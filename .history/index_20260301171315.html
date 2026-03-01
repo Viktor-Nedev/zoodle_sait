@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Приложение за животни - Инсталирай сега</title>
+    <title>Zoodle</title>
+    <link rel="icon" type="image/png" href="logo.png">
     <style>
         :root {
             --primary-color: #2e7d32;
@@ -393,9 +394,10 @@
         <div class="container">
             <h2>Готови ли сте да помогнете?</h2>
             <p>Инсталирайте нашето приложение сега и се присъединете към общността на хората, които се грижат за животните.</p>
-            <button id="installBtn" class="btn">
-                <i class="fas fa-download"></i> Инсталирай приложението за Android
-            </button>
+            <a href="https://github.com/Viktor-Nedev/Zoodle/releases/tag/zoodle_final" download class="btn">
+               <i class="fas fa-download"></i> Инсталирай приложението за Android
+            </a>
+
             <div id="installMessage" style="margin-top: 20px; display: none;"></div>
         </div>
     </section>
@@ -416,19 +418,18 @@
     </footer>
 
     <script>
-        // Симулиране на инсталация на приложението
+  
         document.getElementById('installBtn').addEventListener('click', function() {
             const message = document.getElementById('installMessage');
             message.style.display = 'block';
             message.innerHTML = '<p>Инсталацията започна... Моля, изчакайте!</p>';
-            
-            // Симулиране на процес на инсталация
+        
             setTimeout(function() {
                 message.innerHTML = '<p><i class="fas fa-check-circle" style="color: #8bc34a;"></i> Приложението е инсталирано успешно!</p>';
             }, 2000);
         });
         
-        // Плавно скролиране до секциите
+ 
         document.querySelectorAll('nav a').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
